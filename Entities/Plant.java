@@ -1,19 +1,19 @@
 
-public class Pianta {
-    private boolean Poisonusus;
-    private float reproductive_rate; // (0,1]
-    private int energy; 
-    //costruttore 
-    public Pianta (boolean Poisonusus, float reproductive_rate, int energy){
-        this.Poisonusus=Poisonusus;
-        this.reproductive_rate=Math.max(Float.MIN_VALUE, Math.min(reproductive_rate, 1.0f)); 
-        // fa si che il tasso sia sempre tra (0,1] se è <0 lo setta a MIN_VALUE= 1.4E-45
-        this.energy=energy;
-
-
-
+public class Plant extends Entity{
+    private boolean poisonous;
+    
+    public Plant (int x, int y, float reproductive_rate, boolean poisonous){
+        super(x,y,reproductive_rate);
+        this.poisonous = poisonous;
     }
+    
+    @Override
+    public void dailyUpdate(){}
 
+    @Override
+    public Plant reproduce(){
+        return null;
+    }
 
 
 }
