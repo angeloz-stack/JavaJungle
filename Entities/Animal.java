@@ -2,8 +2,8 @@ public abstract class Animal extends Entity {
     protected boolean Herbivore;
     protected boolean Carnivore;
 
-    public Animal(int x, int y, float reproductive_rate, boolean Herbivore, boolean Carnivore){
-        super(x, y, reproductive_rate);
+    public Animal(int[] coord, float reproductive_rate, boolean Herbivore, boolean Carnivore){
+        super(coord, reproductive_rate);
         this.Herbivore = Herbivore;
         this.Carnivore = Carnivore;
     }
@@ -16,7 +16,9 @@ public abstract class Animal extends Entity {
     }
 
     // Moving has to be implemented
-    public void move(){}
+    public void move(int[] destination){
+
+    }
     
     // Eating has to be implemented
     public void eat(){}
