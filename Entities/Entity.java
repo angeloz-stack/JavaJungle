@@ -5,21 +5,25 @@ energy: int, energy of the entity; entity is alive if energy > 0
 age: int, age of the entity
 reproductive_rate: int, reproductive rate of the entity; (0,1]
 */
+import java.util.Arrays;
+import java.util.Random;
+
+
 
 public abstract class Entity {
-    protected int[] coord;
+    protected Integer[] coord;
     protected int energy;
     protected int age;
     protected float reproductive_rate;
 
     // Generic constructor: it will be called by super() in subclasses
-    public Entity(int[] coord, float reproductive_rate) {
-        coord = new int[2];
+    public Entity(Integer[] coord, float reproductive_rate) {
+        coord = new Integer[2];
         this.energy = (int) Math.max(0, Math.min(energy, 100));
         this.reproductive_rate = Math.max(0.1f, Math.min(reproductive_rate, 1.0f));
     }
 
-    public int[] getCoord(){
+    public Integer[] getCoord(){
         return coord;
     }
 
@@ -59,5 +63,41 @@ public abstract class Entity {
 
     public abstract Entity reproduce();
 
+
+
+  
+    public void eat(Entity[][] map, int []eatCoord){
+        Integer[] copyCoord = Arrays.copyOf(this.coord, 2);
+        for (int i=0;i<=1;i++){
+        this.coord[i] = eatCoord[i];
+        }
+        map[eatCoord[0]][eatCoord[1]] = map[copyCoord[0]][copyCoord[1]];
+        map[copyCoord[0]][copyCoord[1]] = null;
+
+    }
+    
+    public void move(Entity[][] map, int [] newCoord){   
+        Integer[] copyCoord = Arrays.copyOf(this.coord, 2);
+        if (newCoord[0]==-1 && newCoord[0]==-1){
+            int Negative = new Random().nextBoolean() ? -1:1;
+            for (int i=0;i<=1;i++){
+                newCoord[i] = coord[i] + 1 + Negative*new Random().nextInt(2);
+                this.coord[i] = newCoord[i];
+            }
+            
+            // caso in cui esce 0,0:
+
+            if(!(newCoord[0]==copyCoord[0]) || !(newCoord [1]==copyCoord[1])){
+                map[newCoord[0]][newCoord[1]] = map[copyCoord[0]][copyCoord[1]];
+                map[copyCoord[0]][copyCoord[1]] = null;
+            }
+            else {
+                map[newCoord[0]][newCoord[1]] = map[copyCoord[0]][copyCoord[1]];
+            }
+        }
+        else {
+            eat(map, newCoord);
+        }
+    }
     
 }
