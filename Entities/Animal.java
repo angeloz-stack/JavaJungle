@@ -10,10 +10,11 @@ public abstract class Animal extends Entity {
     
 
     // Reproduction has to be implemented
-    @Override
     public Animal reproduce(){
         return null;
     }
+
+    public abstract int[] search(Entity AnotherEntity);
 
     // Moving has to be implemented
     public void move(int[] destination){
