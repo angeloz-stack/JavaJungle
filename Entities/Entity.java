@@ -15,7 +15,7 @@ public abstract class Entity {
     // Generic constructor: it will be called by super() in subclasses
     public Entity(int[] coord, float reproductive_rate) {
         coord = new int[2];
-        this.energy = (int) Math.max(0, Math.min(energy, 100));
+        this.energy = Math.max(0, Math.min(energy, 100));
         this.reproductive_rate = Math.max(0.1f, Math.min(reproductive_rate, 1.0f));
     }
 
@@ -29,7 +29,7 @@ public abstract class Entity {
 
 
     public void incrementEnergy(int energy){
-        this.energy = (int) Math.max(0, Math.min(this.energy+energy, 100));
+        this.energy = Math.max(0, Math.min(this.energy+energy, 100));
         return;
     }
     
