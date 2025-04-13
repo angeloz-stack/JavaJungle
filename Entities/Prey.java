@@ -16,6 +16,8 @@ public class Prey extends Animal{
     }
 
     public int[] search(Entity[][] map, Entity AnotherEntity){
+        String toFind = AnotherEntity.getClass().getSimpleName();
+        
         int n = map.length;
         int i = coord[0];
         int j = coord[1];
@@ -36,8 +38,8 @@ public class Prey extends Animal{
             for (int col = startCol; col <= startCol; col++){
                 if (row == i && col == j) continue;
 
-                if(map[row][col] != null){
-                    int x = 
+                if(toFind.equals(map[row][col].getClass().getSimpleName())){
+                    int x =
                 }
 
             }
