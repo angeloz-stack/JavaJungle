@@ -1,8 +1,10 @@
+package Entities;
+
 public class Prey extends Animal{
     private boolean mimetic;
     private boolean poisonous;
-    public Prey(int[] coord, float reproductive_rate, boolean mimetic, boolean poisonous){
-        super(coord, reproductive_rate, true, false);
+    public Prey(int[] coord, float reproductive_rate, int energy, boolean mimetic, boolean poisonous){
+        super(coord, reproductive_rate, energy, true, false);
         this.mimetic = mimetic;
         this.poisonous = poisonous;
     }

@@ -1,8 +1,10 @@
+package Entities;
+
 public class Plant extends Entity{
     private boolean poisonous;
     
-    public Plant (int[] coord, float reproductive_rate, boolean poisonous){
-        super(coord,reproductive_rate);
+    public Plant (int[] coord, float reproductive_rate, int energy, boolean poisonous){
+        super(coord,reproductive_rate, energy);
         this.poisonous = poisonous;
     }
     

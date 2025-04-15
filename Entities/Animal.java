@@ -1,9 +1,11 @@
+package Entities;
+
 public abstract class Animal extends Entity {
     protected boolean Herbivore;
     protected boolean Carnivore;
 
-    public Animal(int[] coord, float reproductive_rate, boolean Herbivore, boolean Carnivore){
-        super(coord, reproductive_rate);
+    public Animal(int[] coord, float reproductive_rate, int energy, boolean Herbivore, boolean Carnivore){
+        super(coord, reproductive_rate, energy);
         this.Herbivore = Herbivore;
         this.Carnivore = Carnivore;
     }
@@ -15,16 +17,15 @@ public abstract class Animal extends Entity {
         return null;
     }
 
-    public int[] search(Entity[][] map, Entity EntityToFind){
+    public int[] search(Entity[][] map, String EntityToFind){
         /*
         Args:   Entity[][] map -> The matrix in which entities live
-                Entity[] EntityToFind -> The Entity to be found; the method looks for the generic type Predator, Prey or Plant, so it can't be used
+                String EntityToFind -> The Entity to be found; the method looks for the generic type Predator, Prey or Plant, so it can't be used
                                         to find a specific entity in the entire map
 
         Output: int[] result -> An array containing the coordinates of the nearest entity to be found
         */
-        String toFind = EntityToFind.getClass().getSimpleName();
-        
+               
         int n = map.length;
         int i = coord[0];
         int j = coord[1];
@@ -44,9 +45,9 @@ public abstract class Animal extends Entity {
 
         for (int row = startRow; row <= endRow; row++){
             for (int col = startCol; col <= endCol; col++){
-                if (row == i && col == j) continue;
+                if (map[row][col] == null || row == i && col == j) continue;
 
-                if(toFind.equals(map[row][col].getClass().getSimpleName())){
+                if(EntityToFind.equals(map[row][col].getClass().getSimpleName())){
                     // Calculate distance to take the nearest element
                     int deltaRow = row - i;
                     int deltaCol = col - j;

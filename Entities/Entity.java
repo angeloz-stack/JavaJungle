@@ -1,3 +1,5 @@
+package Entities;
+
 /*
 i: int, i coordinate of the entity (rows)
 j: int, j coordinate of the entity (columns)
@@ -13,14 +15,18 @@ public abstract class Entity {
     protected float reproductive_rate;
 
     // Generic constructor: it will be called by super() in subclasses
-    public Entity(int[] coord, float reproductive_rate) {
-        coord = new int[2];
+    public Entity(int[] coord, float reproductive_rate, int energy) {
+        if (coord.length != 2) throw new IllegalArgumentException("L'array deve avere 2 elementi ma ne sono stati dati "+coord.length);
+        if (coord[0] < 0) throw new IllegalArgumentException("L'array non può avere coordinate negative.");
+        if (coord[1] < 0) throw new IllegalArgumentException("L'array non può avere coordinate negative.");
+        this.coord = coord;
         this.energy = Math.max(0, Math.min(energy, 100));
         this.reproductive_rate = Math.max(0.1f, Math.min(reproductive_rate, 1.0f));
     }
 
-    public int[] getCoord(){
-        return coord;
+    public int getCoord(int x){
+        if (x<0 || x>1) throw new ArrayIndexOutOfBoundsException("Indice fuori dai limiti");
+        return coord[x];
     }
 
     public int getEnergy(){

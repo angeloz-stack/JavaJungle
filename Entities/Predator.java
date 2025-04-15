@@ -1,8 +1,10 @@
+package Entities;
+
 public class Predator extends Animal{
     private int max_preys_per_day;
 
-    public Predator(int[] coord, float reproductive_rate, boolean Herbivore, boolean Carnivore, int max_preys_per_day){
-        super(coord, reproductive_rate, Herbivore, Carnivore);
+    public Predator(int[] coord, float reproductive_rate, int energy, boolean Herbivore, boolean Carnivore, int max_preys_per_day){
+        super(coord, reproductive_rate, energy, Herbivore, Carnivore);
         this.max_preys_per_day = max_preys_per_day;
     }
     
