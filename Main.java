@@ -27,7 +27,6 @@ public class Main{
         int[] coord = preda.search(map,"Plant");
         System.out.println(coord[0]+" "+coord[1]);
         
-
         return;
     }
 }
